@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+
+  Options +FollowSymlinks -Multiviews
+
+  RewriteEngine On
+
+
+#设置用户端的重写规则，入口文件index.php，隐藏index.php
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  RewriteCond %{HTTP_HOST} ^www.1392010.top$ [NC]
+
+  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+
+#设置用户端的重写规则，入口文件index.php，隐藏admin.php
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  RewriteCond %{HTTP_HOST} ^admin.1392010.top$ [NC]
+
+  RewriteRule ^(.*)$ admin.php/$1 [QSA,PT,L]
+
+</IfModule>
+
